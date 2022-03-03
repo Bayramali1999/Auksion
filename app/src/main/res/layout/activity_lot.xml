@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".LotActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:auto_cycle="true"
+            app:corner_radius="5"
+            app:delay="0"
+            app:error_image="@color/design_default_color_error"
+            app:period="1000"
+            app:placeholder="@drawable/ic_baseline_sync_24" />
+
+
+        <LinearLayout
+            android:id="@+id/detail_lot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image_slider"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/lot_item_bg"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/tv_lot_please"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="sadasdasdasdasasdas" />
+
+                <TextView
+                    android:id="@+id/tv_lot_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@drawable/no_item_style"
+                    android:text="№ 1364193"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="5dp"
+                android:background="@color/background_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_lot_coast"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="sadasdasdasdasasdas\ndasdas" />
+
+                <TextView
+                    android:id="@+id/tv_lot_coast_starter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="№ 1364193\nsdsadas" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/auksion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_lot"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/auksion_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/action_item_bg"
+                android:drawableStart="@drawable/auksion_y"
+                android:text="Auksion"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/auksion_down"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_weight="2"
+                android:background="@drawable/action_item_bg"
+                android:drawableEnd="@drawable/ic_baseline_south_west_24" />
+
+            <TextView
+                android:id="@+id/auksion_person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_weight="2"
+                android:background="@drawable/action_item_bg"
+                android:drawableStart="@drawable/ic_outline_person_24"
+                android:text="0"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/auksion_favorit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_weight="2"
+                android:background="@drawable/action_item_bg"
+                android:drawableStart="@drawable/ic_baseline_favorite_border_24"
+                android:text="0"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/auksion_eye"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_weight="2"
+                android:background="@drawable/action_item_bg"
+                android:drawableStart="@drawable/ic_baseline_remove_red_eye_24"
+                android:text="0" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/auksion_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/auksion"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/action_item_bg"
+            android:drawableStart="@drawable/ic_baseline_book_24"
+            android:text="Traktor"
+            android:textSize="16sp" />
+
+
+        <View
+            android:id="@+id/lot_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/auksion_item_name"
+            android:layout_margin="16dp"
+            android:background="#6E6A6A" />
+
+        <LinearLayout
+            android:id="@+id/deadline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lot_line"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_style"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arizalar qabul qilishning yakunlanishi"
+                android:textAlignment="center" />
+
+
+            <TextView
+                android:id="@+id/lot_time_deadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="6d 22 h 30 m 26 s"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/lot_deadline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Oxirgi sana 10.03.2022 09:00"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/time_auksion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/deadline"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_style"
+            android:orientation="vertical">
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Auksion utkazish vaqti"
+                android:textAlignment="center" />
+
+
+            <TextView
+                android:id="@+id/time_auksion_sasda"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_baseline_access_time_24"
+                android:gravity="center"
+                android:text="Auksion 10.03.2022 luni soat 10:00 dan 18:00 gacha"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/location_auksion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_auksion"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/bg_style"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Auksion utkazish vaqti"
+                android:textAlignment="center" />
+
+
+            <TextView
+                android:id="@+id/location_auksion_sasda"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_outline_location_on_24"
+                android:gravity="center"
+                android:text="Auksion 10.03.2022 luni soat 10:00 dan 18:00 gacha"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/lot_line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/location_auksion"
+            android:layout_margin="16dp"
+            android:background="#6E6A6A" />
+
+
+        <LinearLayout
+            android:id="@+id/mol_mulk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lot_line2"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_style"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mol_mul_item1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_style"
+                android:drawableStart="@drawable/mul_malum"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:gravity="center"
+                android:text="Mulk malumotlari"
+                android:textAlignment="textStart"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/molmulk_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="fdsasdfasfasdfasdfsdfsdfs\ndsfdsfsdfsdf\newrwerwerwer"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ijro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mol_mulk"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_style"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ikro_item_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_style"
+                android:drawableStart="@drawable/ijro_xujjat"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:gravity="center"
+                android:text="Ijro xukumati malumotlari"
+                android:textAlignment="textStart"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/ijro_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="fdsasdfasfasdfasdfsdfsdfs\ndsfdsfsdfsdf\newrwerwerwer"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/auksion_qadamlari"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ijro"
+
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_style"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/auksion_qadamlari_item_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_style"
+                android:drawableStart="@drawable/hamburger"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:gravity="center"
+                android:text="Auksion qadamlari"
+                android:textAlignment="textStart"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/auksion_qadamlari_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="fdsasdfasfasdfasdfsdfsdfs\ndsfdsfsdfsdf\newrwerwerwer"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sotuvchi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/auksion_qadamlari"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_style"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/sotuvchi_item_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_style"
+                android:drawableStart="@drawable/ic_outline_work_outline_24"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:gravity="center"
+                android:text="Auksion qadamlari"
+                android:textAlignment="textStart"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/sotuvchi_hidden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="fdsasdfasfasdfasdfsdfsdfs\ndsfdsfsdfsdf\newrwerwerwer"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>
