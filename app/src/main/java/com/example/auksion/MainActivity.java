@@ -12,7 +12,6 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.auksion.adapter.MyAdapter;
-import com.example.auksion.api.Api;
 import com.example.auksion.constant.ApiInstance;
 import com.example.auksion.data.LotData;
 import com.example.auksion.data.Lots;
@@ -34,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private OnIteClickListener listener;
     private MyAdapter adapter;
     private Button sortBtn, searchBtn;
-    private Api api;
     private int page = 0;
 
     @Override
@@ -42,10 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ini();
-
-
         loadData();
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
@@ -107,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void itemClicked(LotData data) {
                 Intent intent = new Intent(MainActivity.this, LotActivity.class);
+
+                //todo here write some code
+
+                intent.putExtra("lot_num", data.getLot_number());
+
                 startActivity(intent);
             }
         };
@@ -115,4 +115,34 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Intent intent = getIntent();
+//        if (intent != null) {
+//            FilterRequestData data = (FilterRequestData) getIntent().getSerializableExtra("data");
+//            if (data != null) {
+//                ApiInstance.getApiInstance().getFilteredData(data).enqueue(new Callback<Lots>() {
+//                    @Override
+//                    public void onResponse(Call<Lots> call, Response<Lots> response) {
+//                        if (response.isSuccessful()) {
+//                            Lots lot = response.body();
+//                            if (lot != null) {
+//                                dataArrayList.clear();
+//                                dataArrayList.addAll(lot.getShortLotBeans());
+//                                adapter.notifyDataSetChanged();
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Lots> call, Throwable t) {
+//
+//                    }
+//                });
+//            }
+//        }
+//    }
+
 }
