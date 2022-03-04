@@ -1,7 +1,6 @@
 package com.example.auksion.data;
 
 public class FilterMap {
-    private int lot_number;
     private int conficant_groups_id;
     private int conficant_categories_id;
     private int regions_id;
@@ -11,13 +10,15 @@ public class FilterMap {
 
     }
 
-    public int getLot_number() {
-        return lot_number;
+    public FilterMap(int conficant_groups_id, int conficant_categories_id, int regions_id, int areas_id) {
+        this.conficant_groups_id = conficant_groups_id;
+        this.conficant_categories_id = conficant_categories_id;
+        this.regions_id = regions_id;
+        this.areas_id = areas_id;
     }
 
-    public void setLot_number(int lot_number) {
-        this.lot_number = lot_number;
-    }
+
+
 
     public int getConficant_groups_id() {
         return conficant_groups_id;
@@ -49,6 +50,17 @@ public class FilterMap {
 
     public void setAreas_id(int areas_id) {
         this.areas_id = areas_id;
+    }
+
+    @Override
+    public String toString() {
+        return "FilterMap{" +
+
+                ", conficant_groups_id=" + conficant_groups_id +
+                ", conficant_categories_id=" + conficant_categories_id +
+                ", regions_id=" + regions_id +
+                ", areas_id=" + areas_id +
+                '}';
     }
 
     //    "conficant_groups_id":1,

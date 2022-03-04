@@ -5,7 +5,7 @@ public class LotData {
     private Integer lot_statuses_id;
     private String lot_number;
     private Float zaklad_summa;
-    private Long start_price;
+    private Float start_price;
     private Integer confiscant_groups_id;
     private Integer confiscant_categories_id;
     private Integer confiscants_id;
@@ -15,7 +15,7 @@ public class LotData {
     private Integer id;
 
 
-    public LotData(String name, Integer lot_statuses_id, String lot_number, Float zaklad_summa, Long start_price, Integer confiscant_groups_id, Integer confiscant_categories_id, Integer confiscants_id, String order_end_time_str, String start_time_date_str, String file_hash, Integer id) {
+    public LotData(String name, Integer lot_statuses_id, String lot_number, Float zaklad_summa, Float start_price, Integer confiscant_groups_id, Integer confiscant_categories_id, Integer confiscants_id, String order_end_time_str, String start_time_date_str, String file_hash, Integer id) {
         this.name = name;
         this.lot_statuses_id = lot_statuses_id;
         this.lot_number = lot_number;
@@ -66,11 +66,11 @@ public class LotData {
         this.zaklad_summa = zaklad_summa;
     }
 
-    public Long getStart_price() {
+    public Float getStart_price() {
         return start_price;
     }
 
-    public void setStart_price(Long start_price) {
+    public void setStart_price(Float start_price) {
         this.start_price = start_price;
     }
 
@@ -149,8 +149,6 @@ public class LotData {
     }
 }
 
-//
-//
 // "name":"Трактор DF 304",
 //         "lot_statuses_id":2,
 //         "lot_number":"1395724",

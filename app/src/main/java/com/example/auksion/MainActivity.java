@@ -1,19 +1,21 @@
 package com.example.auksion;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.auksion.adapter.MyAdapter;
-import com.example.auksion.api.Api;
 import com.example.auksion.constant.ApiInstance;
+import com.example.auksion.data.FilterRequestData2;
 import com.example.auksion.data.LotData;
 import com.example.auksion.data.Lots;
 import com.example.auksion.data.RequestLots;
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private OnIteClickListener listener;
     private MyAdapter adapter;
     private Button sortBtn, searchBtn;
-    private Api api;
     private int page = 0;
 
     @Override
@@ -42,10 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ini();
-
-
         loadData();
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
@@ -65,17 +63,19 @@ public class MainActivity extends AppCompatActivity {
         String myPage = page + "";
 
         RequestLots req = new RequestLots(5, "1.3.7", "uz", myPage, 0);
+
         ApiInstance.getApiInstance().getData(req).enqueue(new Callback<Lots>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(Call<Lots> call, Response<Lots> response) {
                 if (response.isSuccessful()) {
                     Lots lots = response.body();
                     if (lots != null) {
+                        Log.d("TAG", "response: " + response.body().getResult_msg());
                         dataArrayList.addAll(lots.getShortLotBeans());
                         adapter.notifyDataSetChanged();
                         progressBar.setVisibility(View.GONE);
                     }
-                    Log.d("TAG", "onResponse: " + lots.toString());
                 }
             }
 
@@ -107,12 +107,43 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void itemClicked(LotData data) {
                 Intent intent = new Intent(MainActivity.this, LotActivity.class);
+                intent.putExtra("lot_num", data.getLot_number());
                 startActivity(intent);
             }
         };
 
         adapter = new MyAdapter(dataArrayList, this, listener);
         recyclerView.setAdapter(adapter);
-
     }
+
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Intent intent = getIntent();
+//        if (intent != null) {
+//            Bundle bundle = getIntent().getExtras();
+//            if (bundle != null) {
+//                FilterRequestData2 data = bundle.getParcelable("data");
+//                ApiInstance.getApiInstance().getFilteredData(data).enqueue(new Callback<Lots>() {
+//                    @Override
+//                    public void onResponse(Call<Lots> call, Response<Lots> response) {
+//                        if (response.isSuccessful()) {
+//                            Lots lot = response.body();
+//                            if (lot != null) {
+////                                dataArrayList.clear();
+////                                dataArrayList.addAll(lot.getShortLotBeans());
+////                                adapter.notifyDataSetChanged();
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Lots> call, Throwable t) {
+//
+//                    }
+//                });
+//            }
+//        }
+//    }
 }
