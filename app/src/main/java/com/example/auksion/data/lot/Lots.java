@@ -1,4 +1,6 @@
-package com.example.auksion.data;
+package com.example.auksion.data.lot;
+
+import com.example.auksion.data.lot.LotData;
 
 import java.util.List;
 
@@ -38,5 +40,14 @@ public class Lots {
 
     public void setResult_msg(String result_msg) {
         this.result_msg = result_msg;
+    }
+
+    @Override
+    public String toString() {
+        return "Lots{" +
+                "shortLotBeans=" + shortLotBeans +
+                ", result_code=" + result_code +
+                ", result_msg='" + result_msg + '\'' +
+                '}';
     }
 }

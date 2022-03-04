@@ -1,31 +1,29 @@
-package com.example.auksion.data;
+package com.example.auksion.data.filter_item;
 
-public class GroupData {
-
-    private Integer ordering;
+public class RegionData {
+    private Integer soato;
     private String name_ru;
     private String name_uk;
     private String name;
-
     private Integer id;
 
-    public GroupData(Integer ordering, String name_ru, String name_uk, String name, Integer id) {
-        this.ordering = ordering;
+    public RegionData(Integer soato, String name_ru, String name_uk, String name, Integer id) {
+        this.soato = soato;
         this.name_ru = name_ru;
         this.name_uk = name_uk;
         this.name = name;
         this.id = id;
     }
 
-    public GroupData() {
+    public RegionData() {
     }
 
-    public Integer getOrdering() {
-        return ordering;
+    public Integer getSoato() {
+        return soato;
     }
 
-    public void setOrdering(Integer ordering) {
-        this.ordering = ordering;
+    public void setSoato(Integer soato) {
+        this.soato = soato;
     }
 
     public String getName_ru() {
@@ -60,9 +58,8 @@ public class GroupData {
         this.id = id;
     }
 }
-//
-// "ordering": 3,
-//         "name_ru": "Недвижимость",
-//         "name_uk": "Кўчмас мулк",
-//         "name": "Кўчмас мулк",
+// "soato": 1726,
+//         "name_ru": "г.Ташкент",
+//         "name_uk": "Тошкент ш.",
+//         "name": "Тошкент ш.",
 //         "id": 1

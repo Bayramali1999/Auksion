@@ -1,5 +1,6 @@
 package com.example.auksion;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,14 +13,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.auksion.constant.ApiInstance;
-import com.example.auksion.data.AreaData;
-import com.example.auksion.data.CategoryData;
-import com.example.auksion.data.DirectionData;
-import com.example.auksion.data.FilterMap;
-import com.example.auksion.data.FilterRequestData;
-import com.example.auksion.data.Filters;
-import com.example.auksion.data.GroupData;
-import com.example.auksion.data.RegionData;
+import com.example.auksion.data.filter.FilterActionGetResData;
+import com.example.auksion.data.filter.FilterActionRequestData;
+import com.example.auksion.data.filter.FiltersMapForSpinner2;
+import com.example.auksion.data.filter_item.AreaData;
+import com.example.auksion.data.filter_item.CategoryData;
+import com.example.auksion.data.filter_item.DirectionData;
+import com.example.auksion.data.filter_item.GroupData;
+import com.example.auksion.data.filter_item.RegionData;
 import com.example.auksion.dialog.ActiveDialog;
 import com.example.auksion.listener.OnItemSelected;
 
@@ -33,7 +34,6 @@ import retrofit2.Response;
 public class SearchActivity extends AppCompatActivity {
 
     private ImageView back;
-
     private List<AreaData> areas = new ArrayList<>();
     private List<CategoryData> typ = new ArrayList<>();
     private EditText searchById;
@@ -46,6 +46,7 @@ public class SearchActivity extends AppCompatActivity {
     private ActiveDialog dialog;
     private int first = -1, second = -1, third = -1, fourth = -1;
     private Button clearBtn, searchBtn;
+    private boolean hasBody = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +54,25 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         loadData();
-
         ini();
         checkItems();
-
         actionWithView();
 
+
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                first = -1;
+                second = -1;
+                third = -1;
+                fourth = -1;
+
+                actives.setText("Davlat activlari");
+                types.setText("Mol-mulk toifasi");
+                province.setText("Viloyat");
+                area.setText("Tuman");
+            }
+        });
     }
 
     private void checkItems() {
@@ -67,14 +81,12 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-
-        FilterRequestData data = new FilterRequestData(7, "1.3.7", "uz", 0);
-
-        ApiInstance.getApiInstance().getFilterData(data).enqueue(new Callback<Filters>() {
+        FilterActionRequestData data = new FilterActionRequestData(7, "1.3.7", "uz", 0);
+        ApiInstance.getApiInstance().getFilterData(data).enqueue(new Callback<FilterActionGetResData>() {
             @Override
-            public void onResponse(Call<Filters> call, Response<Filters> response) {
+            public void onResponse(Call<FilterActionGetResData> call, Response<FilterActionGetResData> response) {
                 if (response.isSuccessful()) {
-                    Filters filters = response.body();
+                    FilterActionGetResData filters = response.body();
                     if (filters != null) {
                         regionData.addAll(filters.getRegions());
                         areaData.addAll(filters.getAreas());
@@ -86,7 +98,7 @@ public class SearchActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Filters> call, Throwable t) {
+            public void onFailure(Call<FilterActionGetResData> call, Throwable t) {
                 Log.d("TAGS", "onFailure: " + t.getMessage());
             }
         });
@@ -108,10 +120,12 @@ public class SearchActivity extends AppCompatActivity {
                 OnItemSelected selected = new OnItemSelected() {
                     @Override
                     public void itemSelected(int s) {
-                        first = s + 1;
+                        first = s;
                         if (s >= 0) {
                             types.setEnabled(true);
                             actives.setText(groupData.get(s).getName());
+                            types.setText("Mol mulk toifasi");
+                            second = -1;
                         }
                     }
                 };
@@ -131,7 +145,7 @@ public class SearchActivity extends AppCompatActivity {
             public void onClick(View view) {
                 typ.clear();
                 for (int i = 0; i < categoryData.size(); i++) {
-                    if (first == categoryData.get(i).getConfiscant_groups_id()) {
+                    if (groupData.get(first).getId() == categoryData.get(i).getConfiscant_groups_id()) {
                         typ.add(categoryData.get(i));
                     }
                 }
@@ -140,7 +154,7 @@ public class SearchActivity extends AppCompatActivity {
                 OnItemSelected selected = new OnItemSelected() {
                     @Override
                     public void itemSelected(int s) {
-                        second = s + 1;
+                        second = typ.get(s).getId();
                         types.setText(typ.get(s).getName());
                     }
                 };
@@ -161,10 +175,12 @@ public class SearchActivity extends AppCompatActivity {
                 OnItemSelected selected = new OnItemSelected() {
                     @Override
                     public void itemSelected(int s) {
-                        third = s + 1;
+                        third = s;
                         if (s >= 0) {
                             area.setEnabled(true);
                             province.setText(regionData.get(s).getName());
+                            area.setText("Tuman");
+                            fourth = -1;
                         }
                     }
                 };
@@ -183,7 +199,7 @@ public class SearchActivity extends AppCompatActivity {
                 areas.clear();
 
                 for (int i = 0; i < areaData.size(); i++) {
-                    if (third == areaData.get(i).getRegions_id()) {
+                    if (regionData.get(third).getId() == areaData.get(i).getRegions_id()) {
                         areas.add(areaData.get(i));
                     }
                 }
@@ -191,7 +207,7 @@ public class SearchActivity extends AppCompatActivity {
                 OnItemSelected selected = new OnItemSelected() {
                     @Override
                     public void itemSelected(int s) {
-                        fourth = s + 1;
+                        fourth = areas.get(s).getId();
                         area.setText(areas.get(s).getName());
                     }
                 };
@@ -206,6 +222,7 @@ public class SearchActivity extends AppCompatActivity {
                 dialog.show(getFragmentManager(), "dasdas");
             }
         });
+
     }
 
     private void ini() {
@@ -231,30 +248,31 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void searchItemsByClick() {
-        FilterMap filterMap = new FilterMap();
+
+        String id = searchById.getText().toString();
+        Intent intent = new Intent(this, MainActivity.class);
+        FiltersMapForSpinner2 forSpinner2 = new FiltersMapForSpinner2();
+
+        if (!TextUtils.isEmpty(id)) {
+            forSpinner2.setLot_number(id);
+        }
+
         if (first != -1) {
-            filterMap.setConficant_groups_id(first);
+            forSpinner2.setConfiscant_groups_id(first + 1);
         }
         if (second != -1) {
-            filterMap.setConficant_categories_id(second);
+            forSpinner2.setConfiscant_categories_id(second);
         }
         if (third != -1) {
-            filterMap.setRegions_id(third);
+            forSpinner2.setRegions_id(third + 1);
         }
         if (fourth != -1) {
-            filterMap.setAreas_id(fourth);
-        }
-        String number = searchById.getText().toString();
-
-        if (TextUtils.isEmpty(number)) {
-            int foo = Integer.parseInt(number);
-            filterMap.setLot_number(foo);
+            forSpinner2.setAreas_id(fourth);
         }
 
-        FilterRequestData data = new FilterRequestData(7, "1.3.7", "uz", 0, filterMap);
+        intent.putExtra("search_by_spinner2", forSpinner2);
 
-
-        
+        startActivity(intent);
+        finish();
     }
-
 }

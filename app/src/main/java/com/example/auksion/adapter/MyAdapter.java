@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.auksion.R;
-import com.example.auksion.data.LotData;
+import com.example.auksion.data.lot.LotData;
 import com.example.auksion.listener.OnIteClickListener;
 
 import java.util.ArrayList;

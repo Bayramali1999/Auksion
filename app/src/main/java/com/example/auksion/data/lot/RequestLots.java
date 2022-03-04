@@ -1,4 +1,4 @@
-package com.example.auksion.data;
+package com.example.auksion.data.lot;
 
 public class RequestLots {
     private int action;

@@ -1,9 +1,15 @@
-package com.example.auksion.data;
+package com.example.auksion.data.filter;
+
+import com.example.auksion.data.filter_item.AreaData;
+import com.example.auksion.data.filter_item.CategoryData;
+import com.example.auksion.data.filter_item.DirectionData;
+import com.example.auksion.data.filter_item.GroupData;
+import com.example.auksion.data.filter_item.RegionData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Filters {
+public class FilterActionGetResData {
     private List<RegionData> regions = new ArrayList<>();
     private List<AreaData> areas = new ArrayList<>();
     private List<GroupData> groups = new ArrayList<>();
@@ -13,7 +19,7 @@ public class Filters {
     private String result_msg;
 
 
-    public Filters(List<RegionData> regions, List<AreaData> areas, List<GroupData> groups, List<CategoryData> categories, List<DirectionData> directions, Integer result_code, String result_msg) {
+    public FilterActionGetResData(List<RegionData> regions, List<AreaData> areas, List<GroupData> groups, List<CategoryData> categories, List<DirectionData> directions, Integer result_code, String result_msg) {
         this.regions = regions;
         this.areas = areas;
         this.groups = groups;
@@ -23,7 +29,7 @@ public class Filters {
         this.result_msg = result_msg;
     }
 
-    public Filters() {
+    public FilterActionGetResData() {
     }
 
     public List<RegionData> getRegions() {

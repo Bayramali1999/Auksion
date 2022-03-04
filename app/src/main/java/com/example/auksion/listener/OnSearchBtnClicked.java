@@ -1,9 +1,9 @@
 package com.example.auksion.listener;
 
-import com.example.auksion.data.FilterRequestData;
+import com.example.auksion.data.filter.FilterActionRequestData;
 
 public interface OnSearchBtnClicked {
 
-    void onSearchClicked(FilterRequestData data);
+    void onSearchClicked(FilterActionRequestData data);
 
 }

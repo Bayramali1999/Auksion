@@ -1,4 +1,4 @@
-package com.example.auksion.data;
+package com.example.auksion.data.filter_item;
 
 public class DirectionData {
 
