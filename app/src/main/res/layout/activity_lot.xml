@@ -55,11 +55,12 @@
                 <TextView
                     android:id="@+id/tv_lot_id"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:background="@drawable/no_item_style"
                     android:text="№ 1364193"
                     android:textColor="@color/black"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -105,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="4dp"
-                android:layout_weight="1"
+                android:layout_weight="1.7"
                 android:background="@drawable/action_item_bg"
                 android:drawableStart="@drawable/auksion_y"
                 android:text="Auksion"
@@ -218,7 +219,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/deadline"
-            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/bg_style"
             android:orientation="vertical">
 
@@ -226,8 +230,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Auksion utkazish vaqti"
-                android:textAlignment="center" />
+                android:text="Auksion utkazish vaqti" />
 
 
             <TextView
@@ -240,7 +243,7 @@
                 android:text="Auksion 10.03.2022 luni soat 10:00 dan 18:00 gacha"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 tools:ignore="RtlCompat" />
 
@@ -259,8 +262,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Auksion utkazish vaqti"
-                android:textAlignment="center" />
+                android:text="Manzil" />
 
 
             <TextView
@@ -273,7 +275,7 @@
                 android:text="Auksion 10.03.2022 luni soat 10:00 dan 18:00 gacha"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 tools:ignore="RtlCompat" />
 
@@ -310,12 +312,116 @@
                 android:textAlignment="textStart"
                 tools:ignore="RtlCompat" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/molmulk_hidden"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="fdsasdfasfasdfasdfsdfsdfs\ndsfdsfsdfsdf\newrwerwerwer"
-                android:visibility="gone" />
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="Mol mulk xo'kjalik saqlash joyi"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple_200" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Viloyat" />
+
+                <TextView
+                    android:id="@+id/tv_mol_mul_vil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Viloyat"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tuman" />
+
+                <TextView
+                    android:id="@+id/tv_mol_mul_tuman"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Tuman"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Manzil" />
+
+                <TextView
+                    android:id="@+id/tv_mol_mul_manzil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Manzil"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="Muddatni oldindan ko'rish jadvali"
+                    android:textAlignment="center"
+                    android:textColor="@color/purple_200" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1-kun" />
+
+                <TextView
+                    android:id="@+id/tv_mol_mul_1kun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="01.03.2022. dsfsfs"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2-kun" />
+
+                <TextView
+                    android:id="@+id/tv_mol_mul_2kun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="01.02.0555 sds"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3-kun" />
+
+                <TextView
+                    android:id="@+id/tv_mol_mul_3kun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="01.03.2022.sadasdas"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -340,12 +446,14 @@
                 android:textAlignment="textStart"
                 tools:ignore="RtlCompat" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/ijro_hidden"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="fdsasdfasfasdfasdfsdfsdfs\ndsfdsfsdfsdf\newrwerwerwer"
-                android:visibility="gone" />
+                android:orientation="vertical"
+                android:visibility="visible">
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -410,7 +518,6 @@
                 android:visibility="gone" />
 
         </LinearLayout>
-
 
     </RelativeLayout>
 

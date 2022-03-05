@@ -6,13 +6,26 @@ public class RequestLots {
     private String language;
     private String currentPage;
     private int is_gzipped;
+    private Object filters_map;
 
-    public RequestLots(int action, String version, String language, String currentPage, int is_gzipped) {
+    public RequestLots() {
+    }
+
+    public RequestLots(int action, String version, String language, String currentPage, int is_gzipped, Object filters_map) {
         this.action = action;
         this.version = version;
         this.language = language;
         this.currentPage = currentPage;
         this.is_gzipped = is_gzipped;
+        this.filters_map = filters_map;
+    }
+
+    public Object getFilters_map() {
+        return filters_map;
+    }
+
+    public void setFilters_map(Object filters_map) {
+        this.filters_map = filters_map;
     }
 
     public int getAction() {

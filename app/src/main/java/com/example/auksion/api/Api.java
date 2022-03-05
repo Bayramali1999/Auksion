@@ -6,7 +6,7 @@ import com.example.auksion.data.filter.GetFilteredReq;
 import com.example.auksion.data.filter.FilterActionGetResData;
 import com.example.auksion.data.lot.Lots;
 import com.example.auksion.data.lot.RequestLots;
-import com.example.auksion.data.detail.Example;
+import com.example.auksion.data.detail.DetailData;
 import com.example.auksion.data.detail.PostDetailReq;
 
 import retrofit2.Call;
@@ -28,7 +28,7 @@ public interface Api {
 
 
     @HTTP(path = "api/v1/mobile", hasBody = true, method = "POST")
-    Call<Example> getDetails(@Body PostDetailReq ew);
+    Call<DetailData> getDetails(@Body PostDetailReq ew);
 
 
 }
