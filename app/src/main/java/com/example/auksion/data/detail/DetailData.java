@@ -1,11 +1,11 @@
 package com.example.auksion.data.detail;
 
-public class Example {
+public class DetailData {
     private LotBean lotBean;
     private Integer result_code;
     private String result_msg;
 
-    public Example(LotBean lotBean, Integer result_code, String result_msg) {
+    public DetailData(LotBean lotBean, Integer result_code, String result_msg) {
         this.lotBean = lotBean;
         this.result_code = result_code;
         this.result_msg = result_msg;

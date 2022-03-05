@@ -8,6 +8,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiInstance {
 
     public static Api api = null;
+    public static String[] tartiblash = new String[]{
+            "Yangisidan boshlab",
+            "Eskisidan boshlab",
+            "Qimmatidan boshlab",
+            "Arzonidan Boshlab",
+            "Maydoni kattasidan ",
+            "Maydoni kichigidan ",
+            "Ko'p ko'rilganlar",
+            "Kam ko'rilganlar"
+    };
 
     public static Api getApiInstance() {
         if (api == null) {

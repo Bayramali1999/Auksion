@@ -44,7 +44,7 @@ public class SearchActivity extends AppCompatActivity {
     private List<GroupData> groupData = new ArrayList<>();
     private List<DirectionData> directionData = new ArrayList<>();
     private ActiveDialog dialog;
-    private int first = -1, second = -1, third = -1, fourth = -1;
+    private int first = -1, firstID, second = -1, third = -1, fourth = -1;
     private Button clearBtn, searchBtn;
     private boolean hasBody = false;
 
@@ -120,6 +120,7 @@ public class SearchActivity extends AppCompatActivity {
                 OnItemSelected selected = new OnItemSelected() {
                     @Override
                     public void itemSelected(int s) {
+                        firstID = groupData.get(s).getId();
                         first = s;
                         if (s >= 0) {
                             types.setEnabled(true);
@@ -145,7 +146,7 @@ public class SearchActivity extends AppCompatActivity {
             public void onClick(View view) {
                 typ.clear();
                 for (int i = 0; i < categoryData.size(); i++) {
-                    if (groupData.get(first).getId() == categoryData.get(i).getConfiscant_groups_id()) {
+                    if (groupData.get(first).getId().equals(categoryData.get(i).getConfiscant_groups_id())) {
                         typ.add(categoryData.get(i));
                     }
                 }
@@ -199,7 +200,7 @@ public class SearchActivity extends AppCompatActivity {
                 areas.clear();
 
                 for (int i = 0; i < areaData.size(); i++) {
-                    if (regionData.get(third).getId() == areaData.get(i).getRegions_id()) {
+                    if (regionData.get(third).getId().equals(areaData.get(i).getRegions_id())) {
                         areas.add(areaData.get(i));
                     }
                 }
@@ -258,7 +259,7 @@ public class SearchActivity extends AppCompatActivity {
         }
 
         if (first != -1) {
-            forSpinner2.setConfiscant_groups_id(first + 1);
+            forSpinner2.setConfiscant_groups_id(firstID);
         }
         if (second != -1) {
             forSpinner2.setConfiscant_categories_id(second);

@@ -62,6 +62,9 @@ public class LotBean {
     private Integer user_order_cnt;
     private String user_order_cnt_str;
 
+    public LotBean() {
+    }
+
     public LotBean(Integer id, String name, String start_time, String end_time, String order_end_time, Integer lot_statuses_id, String joylashgan_manzil, String lot_number, Integer lot_types_id, String lot_types_name, Double start_price, Double zaklad_summa, Integer confiscant_groups_id, Integer confiscant_categories_id, String confiscant_categories_name, Integer count_favourite, Integer is_favourite, Integer view_count, String area_name, String region_name, String department_name, String user_fio, String user_phone, String ex_doc_number, String ex_doc_org, String ex_doc_date, String ex_work_number, String ex_work_date, String f_visit_time1, String f_visit_time2, String f_visit_time3, Integer ex_order_type, String order_end_time_str, Integer auction_type_id, String small_address, Integer properties_sets_id, Integer show_room_time, String zakalad_currency_amount, Integer not_announce_of_results, List<ConfiscantDetails> confiscant_details_list, List<Object> confiscantDocumentsList, List<ConfiscantImagesList> confiscantImagesList, User user, Rekvisits rekvisits, Integer lot_type, String file_hash, Integer confirm_price_from_date_of_sale, Double current_price, Double next_price, Integer customer_id, Integer confiscants_id, Integer exec_orders_id, Integer is_closed, Integer areas_id, Integer check_for_debt, Integer user_order_cnt, String user_order_cnt_str) {
         this.id = id;
         this.name = name;

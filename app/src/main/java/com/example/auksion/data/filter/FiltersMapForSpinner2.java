@@ -5,7 +5,6 @@ import android.os.Parcelable;
 
 public class FiltersMapForSpinner2 implements Parcelable {
 
-
     public static final Creator<FiltersMapForSpinner2> CREATOR = new Creator<FiltersMapForSpinner2>() {
         @Override
         public FiltersMapForSpinner2 createFromParcel(Parcel in) {
@@ -22,6 +21,8 @@ public class FiltersMapForSpinner2 implements Parcelable {
     private Integer confiscant_categories_id;
     private Integer regions_id;
     private Integer areas_id;
+    private String orderby_;
+    private String order_type;
 
     public FiltersMapForSpinner2() {
     }
@@ -47,6 +48,12 @@ public class FiltersMapForSpinner2 implements Parcelable {
             areas_id = null;
         } else {
             areas_id = in.readInt();
+        }
+        orderby_ = in.readString();
+        if (in.readByte() == 0) {
+            order_type = null;
+        } else {
+            order_type = in.readString();
         }
     }
 
@@ -94,6 +101,22 @@ public class FiltersMapForSpinner2 implements Parcelable {
         this.areas_id = areas_id;
     }
 
+    public String getOrderby_() {
+        return orderby_;
+    }
+
+    public void setOrderby_(String orderby_) {
+        this.orderby_ = orderby_;
+    }
+
+    public String getOrder_type() {
+        return order_type;
+    }
+
+    public void setOrder_type(String order_type) {
+        this.order_type = order_type;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -125,6 +148,13 @@ public class FiltersMapForSpinner2 implements Parcelable {
         } else {
             parcel.writeByte((byte) 1);
             parcel.writeInt(areas_id);
+        }
+        parcel.writeString(orderby_);
+        if (order_type == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeString(order_type);
         }
     }
 }
