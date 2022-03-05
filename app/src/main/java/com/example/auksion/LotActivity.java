@@ -29,6 +29,8 @@ public class LotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lot);
 
+        ini();
+
         String lotNum = getIntent().getExtras().getString("lot_num");
         slider = findViewById(R.id.image_slider);
 
@@ -53,6 +55,10 @@ public class LotActivity extends AppCompatActivity {
         });
 
 
+
+    }
+
+    private void ini() {
 
     }
 
